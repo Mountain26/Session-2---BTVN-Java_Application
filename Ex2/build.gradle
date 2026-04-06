@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'ra.edu'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.13.2'
+}
+
+sourceCompatibility = '21'
+targetCompatibility = '21'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    // Tomcat 10.1 provides Servlet 6.0 at runtime
+    compileOnly('jakarta.servlet:jakarta.servlet-api:6.0.0')
+    implementation('org.springframework:spring-webmvc:6.1.5')
+
+    // JSP API is provided by container; keep only for compilation
+    compileOnly('jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.1.1')
+
+    // JSTL: API for compile + implementation packaged into WAR
+    compileOnly('jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.2')
+    runtimeOnly('org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1')
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}

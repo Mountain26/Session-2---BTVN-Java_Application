@@ -1,0 +1,3 @@
+1.	Lỗi trong MyWebAppInitializer.java Lỗi ở đây là do cấu hình đường dẫn đang đặt là "/api/*". Điều này khiến hệ thống chỉ chấp nhận các link bắt đầu bằng chữ "api". Khi truy cập link "/welcome", hệ thống thấy không khớp nên từ chối xử lý và báo lỗi 404.
+2.	Lỗi trong WebConfig.java Lệnh cấu hình ComponentScan đang yêu cầu quét tìm code ở thư mục "service". Tuy nhiên, file WelcomeController cần dùng lại nằm trong thư mục "controller". Do quét sai thư mục, hệ thống không tìm thấy file xử lý này nên không thể hoạt động đúng.
+3.	Nếu chỉ sửa lỗi 1 mà không sửa lỗi 2 Ứng dụng vẫn sẽ báo lỗi 404. Nguyên nhân là link "/welcome" đã được tiếp nhận vào trong hệ thống, nhưng do vẫn quét sai thư mục ở lỗi 2, hệ thống không tìm ra đoạn code nào để xử lý và trả về trang web.
