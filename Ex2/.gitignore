@@ -1,43 +1,18 @@
-.gradle
+# Bỏ qua thư mục sinh ra lúc build code
 build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
-.kotlin
-
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
-*.iml
-*.ipr
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+.gradle/
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+# Bỏ qua cấu hình riêng của IntelliJ IDEA
+.idea/
+*.iml
+*.iws
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Bỏ qua các file biên dịch
+*.class
+*.war
+*.ear
+*.jar
 
-### VS Code ###
-.vscode/
-
-### Mac OS ###
-.DS_Store
+# Bỏ qua file log
+*.log
